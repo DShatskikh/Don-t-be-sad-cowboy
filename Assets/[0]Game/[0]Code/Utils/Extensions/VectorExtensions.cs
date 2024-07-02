@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Super_Auto_Mobs
+namespace Game
 {
     public static class VectorExtensions
     {
@@ -81,6 +81,11 @@ namespace Super_Auto_Mobs
             var tmp = v;
             tmp.y = tmp.y + yDelta;
             v = tmp;
+            return v;
+        }
+        
+        public static Vector2 ToVector3(this Vector3 v)
+        {
             return v;
         }
     }
