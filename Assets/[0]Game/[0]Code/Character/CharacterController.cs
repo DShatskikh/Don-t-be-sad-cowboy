@@ -2,33 +2,40 @@
 
 namespace Game
 {
-    [RequireComponent(typeof(CharacterData))]
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : Controller
     {
-        [SerializeField]
         private CharacterView _view;
-        
         private Mover _mover;
         private CharacterData _data;
 
-        private void Awake()
+        public CharacterController(CharacterData data, CharacterView view)
         {
-            var rigidbody = GetComponent<Rigidbody2D>();
-            _data = GetComponent<CharacterData>();
-            _mover = new Mover(rigidbody, _view, _data);
+            _data = data;
+            _view = view;
+            _mover = new Mover(_data, _view);
         }
 
-        private void Update()
+        public override void OnSubmitDown()
         {
-            var direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            var isRun = Input.GetButton("Cancel");
-            
+            GameData.CharacterStateMachine.TrySwitchState<AimingLassoCharacterState>();
+        }
+        
+        public override void OnCancelDown()
+        {
+            _data.IsRun = true;
+        }
+
+        public override void OnCancelUp()
+        {
+            _data.IsRun = false;
+        }
+
+        public override void OnAxisRaw(Vector2 direction)
+        {
             if (direction.magnitude != 0)
-                _mover.Move(direction, isRun);
+                _mover.Move(direction);
             else
                 _mover.TryStopMove();
-            
-            
         }
     }
 }

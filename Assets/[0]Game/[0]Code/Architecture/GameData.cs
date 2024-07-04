@@ -1,7 +1,14 @@
-﻿namespace Game
+﻿using UnityEngine;
+
+namespace Game
 {
     public static class GameData
     {
-        public static CharacterController Character { get; set; }
+        public static CharacterStateMachine CharacterStateMachine { get; set; }
+        public static CharacterData CharacterData { get; set; }
+        public static AssetProvider AssetProvider { get; set; }
+        public static PlayerInput Input { get; set; }
+        public static CharacterFactory CharacterFactory { get; set; }
+        public static SpriteRenderer BlackPanel { get; set; }
     }
 }

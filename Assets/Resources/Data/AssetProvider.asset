@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b29ba48ed3c4f5abaebc999d6c07201, type: 3}
   m_Name: AssetProvider
   m_EditorClassIdentifier: 
+  AimPrefab: {fileID: 449552689735181408, guid: a2a8c1d422aaf384ba0dfef295d33424, type: 3}
+  LassoPrefab: {fileID: 3704308913015109330, guid: ca6605256c589e54db95b81ec05a44e9, type: 3}
