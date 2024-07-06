@@ -4,12 +4,14 @@ namespace Game
 {
     public class LassoAimController : Controller
     {
+        private const float GrabDistance = 0.3f;
+        
         private CharacterData _data;
         private Transform _aim;
         private Vector2 _aimPosition;
         private LassoTarget[] _targets;
         private LassoTarget _nearestTarget;
-        float _nearestDistance = float.MaxValue;
+        private float _nearestDistance = float.MaxValue;
 
         public LassoAimController(CharacterData data, CharacterView view)
         {
@@ -33,7 +35,7 @@ namespace Game
             SearchNearestTarget();
 
             if (_nearestTarget)
-                _aim.position = _nearestDistance < 0.3f ? _nearestTarget.transform.position : _aimPosition;
+                _aim.position = _nearestDistance < GrabDistance ? _nearestTarget.transform.position : _aimPosition;
             else
                 _aim.position = _aimPosition;
         }
@@ -43,9 +45,9 @@ namespace Game
             _aimPosition += direction * Time.deltaTime * _data.Speed;
         }
 
-        public override void OnSubmitUp()
+        public override void OnLassoUp()
         {
-            if (_nearestTarget)
+            if (_nearestTarget && _nearestDistance < GrabDistance)
             {
                 _data.Lasso = Object.Instantiate(GameData.AssetProvider.LassoPrefab);
                 _data.Lasso.Target = _nearestTarget;

@@ -14,36 +14,57 @@ namespace Game
             {
                 _controller?.OnExit();
                 _controller = value;
-                _controller.OnEnter();
+                _controller?.OnEnter();
             }
-            
         }
+
+        public Action OnConfirmButtonClicked { get; set; }
+        public Action<int, int> OnSlotIndexChanged { get; set; }
+
+        public Action OnBackButtonClicked;
 
         private void Update()
         {
-            if (_controller == null)
-                return;
-            
-            if (Input.GetButtonDown("Submit")) 
-                _controller.OnSubmitDown();
-            
+            if (Input.GetButtonUp("Menu")) 
+                GameData.PanelController.TogglePanelState<UIPanelStatePauseMenu>();
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                OnConfirmButtonClicked?.Invoke();
+                _controller?.OnSubmitDown();
+            }
+
             if (Input.GetButton("Submit")) 
-                _controller.OnSubmit();
+                _controller?.OnSubmit();
             
             if (Input.GetButtonUp("Submit")) 
-                _controller.OnSubmitUp();
-            
-            if (Input.GetButtonDown("Cancel")) 
-                _controller.OnCancelDown();
-            
+                _controller?.OnSubmitUp();
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                _controller?.OnCancelDown();
+                OnBackButtonClicked?.Invoke();
+            }
+
             if (Input.GetButton("Cancel")) 
-                _controller.OnCancel();
+                _controller?.OnCancel();
             
             if (Input.GetButtonUp("Cancel")) 
-                _controller.OnCancelUp();
+                _controller?.OnCancelUp();
+
+            if (Input.GetButtonDown("Lasso")) 
+                _controller?.OnLassoDown();
             
-            _controller.OnAxisRaw(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
-            _controller.OnUpdate();
+            if (Input.GetButtonUp("Lasso")) 
+                _controller?.OnLassoUp();
+
+            var direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            
+            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+                OnSlotIndexChanged?.Invoke(-(int)direction.x, -(int)direction.y);
+
+            _controller?.OnAxisRaw(direction);
+            _controller?.OnUpdate();
         }
     }
 }

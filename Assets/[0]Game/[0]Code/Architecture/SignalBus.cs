@@ -2,7 +2,7 @@
 
 namespace Game
 {
-    public static class EventBus
+    public static class SignalBus
     {
         public static Action LassoOn;
         public static Action LassoOff;

@@ -4,9 +4,9 @@ namespace Game
 {
     public class CharacterController : Controller
     {
-        private CharacterView _view;
-        private Mover _mover;
-        private CharacterData _data;
+        private readonly CharacterView _view;
+        private readonly Mover _mover;
+        private readonly CharacterData _data;
 
         public CharacterController(CharacterData data, CharacterView view)
         {
@@ -15,11 +15,21 @@ namespace Game
             _mover = new Mover(_data, _view);
         }
 
-        public override void OnSubmitDown()
+        public override void OnLassoDown()
         {
-            GameData.CharacterStateMachine.TrySwitchState<AimingLassoCharacterState>();
+            if (!_data.IsLasso) 
+                GameData.CharacterStateMachine.TrySwitchState<AimingLassoCharacterState>();
         }
-        
+
+        public override void OnLassoUp()
+        {
+            if (_data.IsLasso)
+            {
+                _data.Lasso.Target.LetGo();
+                Object.Destroy(_data.Lasso.gameObject);
+            }
+        }
+
         public override void OnCancelDown()
         {
             _data.IsRun = true;

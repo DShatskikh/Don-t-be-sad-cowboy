@@ -14,5 +14,7 @@ namespace Game
         public virtual void OnEnter() { }
         public virtual void OnUpdate() { }
         public virtual void OnExit() { }
+        public virtual void OnLassoDown() { }
+        public virtual void OnLassoUp() { }
     }
 }

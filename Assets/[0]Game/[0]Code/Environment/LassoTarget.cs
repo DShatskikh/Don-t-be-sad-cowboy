@@ -11,14 +11,14 @@ namespace Game
         
         private void OnEnable()
         {
-            EventBus.LassoOn += OnLassoOn;
-            EventBus.LassoOff += OnLassoOff;
+            SignalBus.LassoOn += OnLassoOn;
+            SignalBus.LassoOff += OnLassoOff;
         }
 
         private void OnDisable()
         {
-            EventBus.LassoOn -= OnLassoOn;
-            EventBus.LassoOff -= OnLassoOff;
+            SignalBus.LassoOn -= OnLassoOn;
+            SignalBus.LassoOff -= OnLassoOff;
         }
 
         public void Grab()
