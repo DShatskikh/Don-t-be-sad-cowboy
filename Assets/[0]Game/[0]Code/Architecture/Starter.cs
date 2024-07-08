@@ -22,7 +22,10 @@ namespace Game
 
         [SerializeField]
         private UIPanelStateController _panelController;
-        
+
+        [SerializeField]
+        private PPEffectManager _pPEffectManager;
+
         private void Awake()
         {
             GameData.AssetProvider = _assetProvider;
@@ -32,6 +35,9 @@ namespace Game
             GameData.CharacterStateMachine = new CharacterStateMachine();
             GameData.BlackPanel = _blackPanel;
             GameData.PanelController = _panelController;
+            GameData.PPEffectManager = _pPEffectManager;
+            GameData.CommandManager = new CommandManager();
+            GameData.CoroutineRunner = this;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game
 {
@@ -11,13 +12,22 @@ namespace Game
 
         public override void Enter()
         {
-            GameData.BlackPanel.gameObject.SetActive(true);
+            GameData.CommandManager.StartCommands(
+                new List<Command>()
+                {
+                    new ShowBackCommand(new CommandData())
+                });   
+
             GameData.Input.Controller = GameData.CharacterFactory.CreateLassoController();
         }
 
         public override void Exit()
         {
-            GameData.BlackPanel.gameObject.SetActive(false);
+            GameData.CommandManager.StartCommands(
+                new List<Command>()
+                {
+                    new HideBackCommand(new CommandData())
+                });   
         }
     }
 }

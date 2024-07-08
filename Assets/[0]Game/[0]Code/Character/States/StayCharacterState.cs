@@ -4,7 +4,7 @@
     {
         public override bool IsCanSwitch()
         {
-            throw new System.NotImplementedException();
+            return true;
         }
 
         public override void Enter()

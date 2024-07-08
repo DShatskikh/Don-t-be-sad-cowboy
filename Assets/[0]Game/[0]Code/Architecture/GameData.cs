@@ -10,6 +10,10 @@ namespace Game
         public static PlayerInput Input { get; set; }
         public static CharacterFactory CharacterFactory { get; set; }
         public static SpriteRenderer BlackPanel { get; set; }
+        public static CommandManager CommandManager { get; set; }
+        public static Starter CoroutineRunner { get; set; }
+
         public static UIPanelStateController PanelController;
+        public static PPEffectManager PPEffectManager;
     }
 }

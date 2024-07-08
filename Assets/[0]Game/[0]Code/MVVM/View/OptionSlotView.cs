@@ -32,6 +32,7 @@ namespace Game
             if (isSelected)
             {
                 _slotName.text = $"[<Color=#00C9FF>{_viewModel.Name}</Color>]";
+                Canvas.ForceUpdateCanvases();
             }
             else
             {

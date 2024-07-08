@@ -5,7 +5,7 @@ namespace Game
     [CreateAssetMenu(fileName = "AssetProvider", menuName = "Data/AssetProvider", order = 30)]
     public class AssetProvider : ScriptableObject
     {
-        public GameObject AimPrefab;
+        public LassoAimView AimPrefab;
         public Lasso LassoPrefab;
     }
 }

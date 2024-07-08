@@ -5,6 +5,9 @@ namespace Game
 {
     public class CharacterView : MonoBehaviour
     {
+        [SerializeField]
+        private SpriteRenderer _lassoZone;
+        
         private Animator _animator;
         
         private static readonly int Speed = Animator.StringToHash("Speed");
@@ -26,6 +29,21 @@ namespace Game
         public void Stay()
         {
             _animator.SetFloat(Speed, 0);
+        }
+
+        public void LassoZoneActivate(bool isActive)
+        {
+            _lassoZone.gameObject.SetActive(isActive);
+        }
+
+        public void LassoWhite()
+        {
+            _lassoZone.color = Color.white;
+        }
+
+        public void LassoRed()
+        {
+            _lassoZone.color = Color.red;
         }
     }
 }

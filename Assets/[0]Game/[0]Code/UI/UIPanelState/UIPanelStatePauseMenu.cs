@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game
 {
@@ -12,7 +13,17 @@ namespace Game
         
         [SerializeField]
         private PauseMenuOptionConfig _config;
-        
+
+        private void OnEnable()
+        {
+            GameData.PPEffectManager.PlayTimeStop();
+        }
+
+        private void OnDisable()
+        {
+            GameData.PPEffectManager.StopTimeStop();
+        }
+
         private void Start()
         {
             for (int i = 0; i < _config.Data.Count; i++)
@@ -40,10 +51,10 @@ namespace Game
                     _panelController.SetPanelState<UIPanelStateBag>();
                     break;
                 case PauseMenuOptionType.Setting:
-                    
+                    _panelController.SetPanelState<UIPanelStateSetting>();
                     break;
                 case PauseMenuOptionType.Exit:
-                    
+                    Application.Quit();
                     break;
             }
         }

@@ -16,7 +16,16 @@ namespace Game
 
         private void Update()
         {
-            _line.SetPosition(0, GameData.CharacterData.transform.position);
+            var characterPosition = GameData.CharacterData.transform.position;
+            var distance = Vector2.Distance(Target.transform.position, characterPosition);
+            
+            if (distance > StringConstants.LassoSize)
+            {
+                var moveDirection = (characterPosition - Target.transform.position).normalized;
+                Target.Move(moveDirection, distance);
+            }
+            
+            _line.SetPosition(0, characterPosition);
             _line.SetPosition(1, Target.transform.position);
         }
     }

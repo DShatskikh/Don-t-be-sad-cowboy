@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game
 {
@@ -13,6 +14,11 @@ namespace Game
             _data = data;
             _view = view;
             _mover = new Mover(_data, _view);
+        }
+
+        public override void OnExit()
+        {
+            _mover.TryStopMove();
         }
 
         public override void OnLassoDown()
