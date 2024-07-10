@@ -59,9 +59,12 @@ namespace Game
                 _controller?.OnLassoUp();
 
             var direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            
+
             if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            {
+                _controller?.OnSlotIndexChanged(direction);
                 OnSlotIndexChanged?.Invoke(-(int)direction.x, -(int)direction.y);
+            }
 
             _controller?.OnAxisRaw(direction);
             _controller?.OnUpdate();

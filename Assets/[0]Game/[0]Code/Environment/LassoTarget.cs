@@ -9,6 +9,9 @@ namespace Game
         
         [SerializeField]
         private SpriteRenderer _lassoSpriteRenderer;
+
+        [SerializeField]
+        private GameObject _selected;
         
         private SpriteRenderer _spriteRenderer;
         
@@ -34,6 +37,16 @@ namespace Game
         public void LetGo()
         {
             _lassoSpriteRenderer.gameObject.SetActive(false);
+        }
+
+        public void Select()
+        {
+            _selected.SetActive(true);
+        }
+
+        public void NotSelect()
+        {
+            _selected.SetActive(false);
         }
         
         private void OnLassoOn()

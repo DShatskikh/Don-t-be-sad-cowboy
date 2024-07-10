@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LassoTargetCube Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6918089978078151314, guid: 7b46eb908ed979a459b00230dc72ba32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8697046199820756583, guid: 7b46eb908ed979a459b00230dc72ba32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

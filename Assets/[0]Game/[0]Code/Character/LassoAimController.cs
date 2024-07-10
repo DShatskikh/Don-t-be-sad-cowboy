@@ -7,7 +7,6 @@ namespace Game
         private const float GrabDistance = 0.3f;
 
         private LassoAimView _aim;
-        private Vector2 _aimPosition;
         private LassoTarget[] _targets;
         private LassoTarget _nearestTarget;
         private float _nearestDistance = float.MaxValue;
@@ -19,28 +18,30 @@ namespace Game
         {
             _data = data;
             _view = view;
-            _targets = Object.FindObjectsByType<LassoTarget>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         }
 
         public override void OnEnter()
         {
             _aim = Object.Instantiate(GameData.AssetProvider.AimPrefab);
             _aim.transform.position = _data.transform.position;
-            _aimPosition = _aim.transform.position;
             _view.LassoZoneActivate(true);
+
+            _targets = Object.FindObjectsByType<LassoTarget>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            SearchAndSelect(Vector2.zero);
         }
 
         public override void OnExit()
         {
             Object.Destroy(_aim.gameObject);
             _view.LassoZoneActivate(false);
+            
+            if (_nearestTarget)
+                _nearestTarget.NotSelect();
         }
 
         public override void OnUpdate()
         {
-            SearchNearestTarget();
-
-            _aim.ColorGrab();
+            /*_aim.ColorGrab();
             
             if (IsLassoDiapason())
             {
@@ -52,22 +53,31 @@ namespace Game
 
                 if (_nearestDistance < GrabDistance) 
                     _aim.NotColorGrab();
-            }
+            }*/
         }
 
-        public override void OnAxisRaw(Vector2 direction)
+        public override void OnSlotIndexChanged(Vector2 direction)
         {
-            _aimPosition += direction * Time.deltaTime * _data.Speed;
-            
             if (_nearestTarget)
-                _aim.transform.position = _nearestDistance < GrabDistance ? _nearestTarget.transform.position.AddY(_nearestTarget.DifferenceY) : _aimPosition;
-            else
-                _aim.transform.position = _aimPosition;
+                _nearestTarget.NotSelect();
+
+            SearchAndSelect(direction);
         }
 
+        private void SearchAndSelect(Vector2 direction)
+        {
+            SearchNearestTarget(direction);
+
+            if (!_nearestTarget)
+                return;
+
+            _aim.transform.position = _nearestTarget.transform.position;
+            _nearestTarget.Select();
+        }
+        
         public override void OnLassoUp()
         {
-            if (IsLassoDiapason() && _nearestDistance < GrabDistance)
+            if (IsLassoDiapason()/* && _nearestDistance < GrabDistance*/)
             {
                 _data.Lasso = Object.Instantiate(GameData.AssetProvider.LassoPrefab);
                 _data.Lasso.Target = _nearestTarget;
@@ -77,28 +87,52 @@ namespace Game
             GameData.CharacterStateMachine.TrySwitchState<ResearchCharacterState>();   
         }
 
-        private void SearchNearestTarget()
+        private void SearchNearestTarget(Vector2 direction)
         {
+            var nearestTarget = _nearestTarget;
+            var nearestDistance = float.MaxValue;
+
             if (_targets.Length != 0)
             {
-                _nearestTarget = _targets[0];
-                _nearestDistance = Vector2.Distance(_nearestTarget.transform.position, _aimPosition);
-
+                var startPoint = _nearestTarget
+                    ? _nearestTarget.transform.position
+                    : _data.transform.position;
+                
                 foreach (var target in _targets)
                 {
-                    var distance = Vector2.Distance(target.transform.position, _aimPosition);
-                
-                    if (_nearestDistance >= distance)
+                    var difference = target.transform.position - startPoint; 
+                    var distance = Vector2.Distance(startPoint, target.transform.position);
+
+                    if (target == nearestTarget)
+                        continue;
+                    
+                    if (distance == 0)
+                        continue;
+                    
+                    if ((direction.x > 0 && (difference.x < 0 || Mathf.Abs(difference.x) < Mathf.Abs(difference.y))) ||
+                        (direction.x < 0 && (difference.x > 0 || Mathf.Abs(difference.x) < Mathf.Abs(difference.y))) ||
+                        (direction.y > 0 && (difference.y < 0 || Mathf.Abs(difference.y) < Mathf.Abs(difference.x))) ||
+                        (direction.y < 0 && (difference.y > 0 || Mathf.Abs(difference.y) < Mathf.Abs(difference.x)))
+                        )
+                        continue;
+
+                    if (nearestDistance >= distance)
                     {
-                        _nearestTarget = target;
-                        _nearestDistance = distance;
+                        nearestTarget = target;
+                        nearestDistance = distance;
                     }
+                    
+                    Debug.Log("" + target.gameObject.name + " direction: " + direction.x + " difference: " + difference.x + " startPoint: " + startPoint + " distance: " + distance + " nearestDistance: " + nearestDistance);
+
                 }
             }
+
+            _nearestTarget = nearestTarget;
+            _nearestDistance = nearestDistance;
         }
         
         private bool IsLassoDiapason() => 
             _nearestTarget
-            && Vector2.Distance(_data.transform.position, _aimPosition) < StringConstants.LassoSize;
+            && Vector2.Distance(_data.transform.position, _nearestTarget.transform.position) < StringConstants.LassoSize;
     }
 }

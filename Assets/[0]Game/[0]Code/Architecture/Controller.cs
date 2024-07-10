@@ -16,5 +16,6 @@ namespace Game
         public virtual void OnExit() { }
         public virtual void OnLassoDown() { }
         public virtual void OnLassoUp() { }
+        public virtual void OnSlotIndexChanged(Vector2 direction) { }
     }
 }
