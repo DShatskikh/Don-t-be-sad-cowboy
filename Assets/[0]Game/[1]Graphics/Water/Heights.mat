@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Heights
-  m_Shader: {fileID: -6465566751694194690, guid: db877d460f4c8a8458d867829166bc29, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: db20bed4d4b25f74fb52da60a04904da, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -18,7 +18,8 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,8 +46,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Height_Coef: 236.3
-    m_Colors: []
+    - _DecalMeshBiasType: 0
+    - _DecalMeshDepthBias: 0
+    - _DecalMeshViewBias: 0
+    - _DrawOrder: 0
+    - _Height_Coef: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Sea_Level: 0
+    m_Colors:
+    - _WaterColor: {r: 0, g: 1, b: 0.8781085, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &8943796464211242793

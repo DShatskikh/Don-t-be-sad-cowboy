@@ -14,8 +14,11 @@ namespace Game
         [SerializeField]
         private CharacterView _view;
         
+        private Vector2 _previousPosition;
+        
         public float Speed => _speed;
         public float RunSpeed => _runSpeed;
+        public float CurrentSpeed;
         public bool IsLasso => Lasso;
         public bool IsRun { get; set; }
         public Rigidbody2D Rigidbody { get; set; }
@@ -26,6 +29,12 @@ namespace Game
         private void Awake()
         {
             Rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            CurrentSpeed = (_previousPosition - (Vector2)transform.position).magnitude;
+            _previousPosition = transform.position;
         }
     }
 }

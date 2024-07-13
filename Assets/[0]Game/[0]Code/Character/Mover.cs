@@ -22,7 +22,7 @@ namespace Game
             _data.Rigidbody.velocity = direction * speed;
             _isMove = true;
 
-            _view.Walk(direction);
+            _view.Walk(direction, _data.CurrentSpeed);
         }
 
         public void TryStopMove()
@@ -33,6 +33,7 @@ namespace Game
             _data.Rigidbody.velocity = Vector2.zero;
             _isMove = false;
             _view.Stay();
+            _data.CurrentSpeed = 0;
         }
     }
 }

@@ -177,10 +177,10 @@ TextureImporter:
       name: Hero_2
       rect:
         serializedVersion: 2
-        x: 13
-        y: 110
+        x: 12
+        y: 111
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,10 +199,10 @@ TextureImporter:
       name: Hero_3
       rect:
         serializedVersion: 2
-        x: 26
-        y: 110
+        x: 24
+        y: 111
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,7 +221,7 @@ TextureImporter:
       name: Hero_4
       rect:
         serializedVersion: 2
-        x: 39
+        x: 36
         y: 111
         width: 10
         height: 17
@@ -243,8 +243,8 @@ TextureImporter:
       name: Hero_5
       rect:
         serializedVersion: 2
-        x: 51
-        y: 111
+        x: 12
+        y: 71
         width: 10
         height: 17
       alignment: 7
@@ -265,10 +265,10 @@ TextureImporter:
       name: Hero_6
       rect:
         serializedVersion: 2
-        x: 63
-        y: 110
+        x: 24
+        y: 71
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,10 +287,10 @@ TextureImporter:
       name: Hero_7
       rect:
         serializedVersion: 2
-        x: 75
-        y: 110
+        x: 36
+        y: 71
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,13 +306,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_8
+      name: Hero_Left_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 110
+        x: 12
+        y: 51
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,7 +350,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_10
+      name: Hero_Left_1
       rect:
         serializedVersion: 2
         x: 0
@@ -375,10 +375,10 @@ TextureImporter:
       name: Hero_11
       rect:
         serializedVersion: 2
-        x: 13
-        y: 91
+        x: 12
+        y: 92
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,8 +397,8 @@ TextureImporter:
       name: Hero_12
       rect:
         serializedVersion: 2
-        x: 26
-        y: 91
+        x: 24
+        y: 92
         width: 10
         height: 17
       alignment: 7
@@ -419,7 +419,7 @@ TextureImporter:
       name: Hero_13
       rect:
         serializedVersion: 2
-        x: 39
+        x: 36
         y: 92
         width: 10
         height: 17
@@ -438,11 +438,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_14
+      name: Hero_Left_3
       rect:
         serializedVersion: 2
-        x: 51
-        y: 92
+        x: 24
+        y: 51
         width: 10
         height: 17
       alignment: 7
@@ -460,13 +460,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_15
+      name: Hero_Left_4
       rect:
         serializedVersion: 2
-        x: 63
-        y: 91
+        x: 36
+        y: 51
         width: 10
-        height: 18
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,13 +482,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_16
+      name: Hero_8
       rect:
         serializedVersion: 2
-        x: 75
-        y: 91
+        x: 49
+        y: 104
         width: 10
-        height: 17
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -497,20 +497,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19d8751698130d4499e7fd7eab232ab7
-      internalID: -1120823293
+      spriteID: df479f739981c394f9cd95587022f259
+      internalID: -770076076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_17
+      name: Hero_10
       rect:
         serializedVersion: 2
-        x: 87
-        y: 91
+        x: 61
+        y: 104
         width: 10
-        height: 17
+        height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,8 +519,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fedb5213a2036c34ebfa9168c95ac645
-      internalID: -715971757
+      spriteID: 473583e2199b5114d930fb56527170db
+      internalID: -1402533927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_14
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 105
+        width: 12
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: debb7d9fa35b69e43b8a40b9725526d7
+      internalID: -630065421
       vertices: []
       indices: 
       edges: []
@@ -541,12 +563,11 @@ TextureImporter:
     nameFileIdTable:
       Hero_0: -6146700129834819302
       Hero_1: 9138555137054584332
-      Hero_10: 7018385267601350384
+      Hero_10: -1402533927
       Hero_11: 1878403
       Hero_12: 1369742935
       Hero_13: -2135991751
-      Hero_14: -1457346111
-      Hero_15: -900868279
+      Hero_14: -630065421
       Hero_16: -1120823293
       Hero_17: -715971757
       Hero_2: 2632276121321243838
@@ -555,8 +576,12 @@ TextureImporter:
       Hero_5: 8960899199633546546
       Hero_6: 1635744749237841209
       Hero_7: 4360131077223874234
-      Hero_8: -3687602496079464652
+      Hero_8: -770076076
       Hero_9: -2142791582941521445
+      Hero_Left_1: 7018385267601350384
+      Hero_Left_2: -3687602496079464652
+      Hero_Left_3: -1457346111
+      Hero_Left_4: -900868279
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
